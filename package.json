@@ -1,0 +1,23 @@
+{
+  "name": "spacex-project",
+  "version": "1.0.0",
+  "description": "space project built with Node.js (Vue.js and Express.js)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danieldimeji/spacex-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danieldimeji/spacex-project/issues"
+  },
+  "homepage": "https://github.com/danieldimeji/spacex-project#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
