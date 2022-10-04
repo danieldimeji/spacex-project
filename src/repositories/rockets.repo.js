@@ -1,19 +1,28 @@
 const rocketsModel = require("../models/rockets.model");
-const spacexServices = require("../services/spacex")
+const spacexServices = require("../services/spacex");
 
-const saveRocket = async (rocket) => {
-  await rocketsModel.findOneAndUpdate(
-    {
-      rocketId: rocket.id,
-    },
-    rocket,
-    {
-      upsert: true,
-    }
-  );
-  console.log("Rocket saved to DB")
-}
+const getRockets = async () => {
+  const spaceRockets = await spacexServices.getRockets()
+  await saveRockets(spaceRockets)
+  const rockets = await rocketsModel.find({}, { rocketId: 0, __v: 0 });
+  return rockets;
+};
+
+const saveRockets = async (rockets) => {
+  for (const rocket of rockets) {
+    await rocketsModel.findOneAndUpdate(
+      {
+        rocketId: rocket.rocketId,
+      },
+      rocket,
+      {
+        upsert: true,
+      }
+    );
+  }
+};
 
 module.exports = {
-  saveRocket,
+  getRockets,
+  saveRockets,
 };

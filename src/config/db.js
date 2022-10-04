@@ -23,6 +23,3 @@ module.exports = {
     mongoConnect,
     mongoDisconnect,
 }
-
-
-//MONGO_URL=mongodb+srv://nasa-api:5LRvYkWaac8YxQ2p@nasacluster.pqwjnyu.mongodb.net/nasa?retryWrites=true&w=majority

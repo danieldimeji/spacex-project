@@ -1,8 +1,8 @@
-const { getRockets} = require("../repositories/rockets.repo");
+const { getRockets } = require("../repositories/rockets.repo");
 
-async function list(req, res) {
+const list = async (req, res) => {
   const rockets = await getRockets();
-  return res.status(200).json(rockets);
+  return res.json(rockets);
 }
 
 module.exports = {
