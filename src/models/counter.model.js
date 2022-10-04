@@ -12,10 +12,7 @@ var CounterSchema = new mongoose.Schema({
 });
 
 
-// create a function setQueryId
-// gets the current counter seq for the schema
-// set the counter seq for the schema
-// update the counter seq for the schema
+// don't update counter if counter is set already
 // always set the counter seq to the last object seq
 
 module.exports = mongoose.model("Counter", CounterSchema);

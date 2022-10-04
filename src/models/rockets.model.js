@@ -1,10 +1,12 @@
+"use strict";
+
 const mongoose = require("mongoose");
-const { setQueryId } =  require("../helpers/query.helper")
+const { setQueryId } = require("../helpers/query.helper");
 
 const rocketSchema = new mongoose.Schema({
   queryId: {
     type: Number,
-    default: 22
+    default: 0,
   },
   rocketId: {
     type: String,
@@ -112,12 +114,13 @@ const rocketSchema = new mongoose.Schema({
   success_rate_pct: Number,
 });
 
-
-rocketSchema.post('findOneAndUpdate', async function() {
+rocketSchema.post("findOneAndUpdate", async function () {
   const docToUpdate = await this.model.findOne(this.getQuery());
   if (docToUpdate !== null) {
-    docToUpdate.queryId = await setQueryId("rocketSchema")
-    docToUpdate.save()
+    if (!docToUpdate.queryId || !docToUpdate.queryId === 0) {
+      docToUpdate.queryId = await setQueryId("rocketSchema");
+      docToUpdate.save();
+    }
   }
 });
 

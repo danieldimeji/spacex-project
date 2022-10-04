@@ -6,7 +6,6 @@ const setQueryId = async (schemaId) => {
     let counterSeq = counter.getCounterSeq(counterSchema)
     const nextSeq = ++counterSeq
     counter.updateCounterSeq(counterSchema, nextSeq)
-    console.log(nextSeq)
     return nextSeq
 }
 
