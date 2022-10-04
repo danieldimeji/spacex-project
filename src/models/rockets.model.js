@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { setQueryId } =  require("../helper/query.helper")
+const { setQueryId } =  require("../helpers/query.helper")
 
 const rocketSchema = new mongoose.Schema({
   queryId: {
