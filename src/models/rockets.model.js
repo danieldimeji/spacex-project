@@ -117,8 +117,8 @@ const rocketSchema = new mongoose.Schema({
 rocketSchema.post("findOneAndUpdate", async function () {
   const docToUpdate = await this.model.findOne(this.getQuery());
   if (docToUpdate !== null) {
-    if (!docToUpdate.queryId || !docToUpdate.queryId === 0) {
-      docToUpdate.queryId = await setQueryId("rocketSchema");
+    if (!docToUpdate.queryId || docToUpdate.queryId === 0) {
+      docToUpdate.queryId = await setQueryId("rocketCounter");
       docToUpdate.save();
     }
   }
