@@ -6,6 +6,7 @@ const { setQueryId } = require("../helpers/query.helper");
 const rocketSchema = new mongoose.Schema({
   queryId: {
     type: Number,
+    unique: true,
     default: 0,
   },
   rocketId: {
@@ -115,11 +116,11 @@ const rocketSchema = new mongoose.Schema({
 });
 
 rocketSchema.post("findOneAndUpdate", async function () {
-  const docToUpdate = await this.model.findOne(this.getQuery());
-  if (docToUpdate !== null) {
-    if (!docToUpdate.queryId || docToUpdate.queryId === 0) {
-      docToUpdate.queryId = await setQueryId("rocketCounter");
-      docToUpdate.save();
+  const doc = await this.model.findOne(this.getQuery());
+  if (doc !== null) {
+    if (!doc.queryId || doc.queryId === 0) {
+      doc.queryId = await setQueryId("rocketCounter");
+      doc.save();
     }
   }
 });

@@ -14,11 +14,11 @@ const getCounter = async (schemaId) => {
 };
 
 const getCounterSeq = (counter) => {
-  return counter.seq;
+  return counter._seq;
 };
 
 const updateCounterSeq = async (counter, seq) => {
-  counter.seq = seq;
+  counter._seq = seq;
   counter.save();
 };
 
