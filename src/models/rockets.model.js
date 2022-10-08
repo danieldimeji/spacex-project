@@ -17,10 +17,11 @@ const rocketSchema = new mongoose.Schema({
     name: String,
     description: String,
     status: String,
-    image: [String],
+    images: [String],
     first_flight: Date,
     company: String,
     country: String,
+    wikipedia: String,
   },
   stages: {
     first_stage: {

@@ -1,3 +1,5 @@
+"use strict";
+
 const counter = require("../models/counter.model");
 
 const getCounter = async (schemaId) => {

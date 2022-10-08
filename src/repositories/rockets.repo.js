@@ -1,9 +1,11 @@
+"use strict";
+
 const rocketsModel = require("../models/rockets.model");
-// const spacexServices = require("../services/spacex");
+const spacexServices = require("../services/spacex");
 
 const getRockets = async () => {
-  // const spaceRockets = await spacexServices.getRockets();
-  // await saveRockets(spaceRockets);
+  const spaceRockets = await spacexServices.getRockets();
+  await saveRockets(spaceRockets);
   const rockets = await rocketsModel.find({}, { _id: 0, rocketId: 0, __v: 0 });
   return rockets;
 };
@@ -27,5 +29,4 @@ const saveRockets = async (rockets) => {
 module.exports = {
   getRockets,
   getRocketByQueryId,
-  saveRockets,
 };
